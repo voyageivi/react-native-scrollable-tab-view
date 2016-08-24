@@ -28,6 +28,7 @@ const ScrollableTabBar = React.createClass({
     tabStyle: View.propTypes.style,
     tabsContainerStyle: View.propTypes.style,
     textStyle: Text.propTypes.style,
+    tabScrollable: React.PropTypes.bool,
   },
 
   getDefaultProps() {
@@ -41,6 +42,7 @@ const ScrollableTabBar = React.createClass({
       style: {},
       tabStyle: {},
       tabsContainerStyle: {},
+      tabScrollable:false,
     };
   },
 
@@ -177,7 +179,7 @@ const ScrollableTabBar = React.createClass({
         scrollsToTop={false}
       >
         <View
-          style={[styles.tabs, {width: this.state._containerWidth, }, this.props.tabsContainerStyle, ]}
+          style={[styles.tabs, !this.props.tabScrollable && {width: this.state._containerWidth, }, this.props.tabsContainerStyle, ]}
           ref={'tabContainer'}
           onLayout={this.onTabContainerLayout}
         >
